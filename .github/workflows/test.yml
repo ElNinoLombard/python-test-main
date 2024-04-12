@@ -34,24 +34,3 @@ jobs:
           github_token: ${{ secrets.TOKEN }}
           pr_label: "test pr"
           pr_title: "test pr"
-
-  prod:
-    runs-on: linux-latest
-    needs: create-pull-request
-    environment:
-      name: "Production"
-
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: python-app
-
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp-dev
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: "App1azerty"
-          slot-name: "Production"
-          publish-profile: ${{ secrets.AZURE_APP }}
-          package: "*.jar"
