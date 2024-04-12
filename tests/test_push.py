@@ -20,3 +20,4 @@ def test_divide_by_zero():
 
 # def test_add():
 #     assert tests.add(3, 5) == 9  # Intentional failure
+#test 1 failed
