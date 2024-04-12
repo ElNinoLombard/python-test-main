@@ -21,3 +21,16 @@ jobs:
 
       - name: Exécution des tests
         run: pytest
+
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Create Pull Request
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: "main"
+          github_token: ${{ secrets.TOKEN }}
+          pr_label: "test pr"
+          pr_title: "test pr"
